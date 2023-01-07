@@ -19,8 +19,8 @@ titles = soup.find_all('div',class_="_4rR01T")
 prices = soup.find_all('div',class_="_30jeq3 _1_WHN1")
 discount=soup.find_all('div',class_="_3Ay6Sb")
 cus_rating=soup.find_all('div',class_="_3LWZlK")
-
 ratngsrews = soup.find_all('span',class_="_34hpFu")
+
 tvtitle=[]
 tRatingsReviews=[]
 tvprice=[]
@@ -33,7 +33,9 @@ for title,tratrev,price,disc,cusrating in zip(titles,ratngsrews,prices,discount,
     tvprice.append(price.text)
     discounts.append(disc.text)
     Cust_rating.append(cusrating.text)
+
 #saving the information in csv file
 info={'TITLES' :tvtitle,'TOTAL RATINGS & REVIEWS' :tRatingsReviews,'PRICES':tvprice,'DISCOUNT':discounts,'CUSTRATING':Cust_rating}
 df=pd.DataFrame(data=info)
+
 df.to_csv("televisiondata.csv")
